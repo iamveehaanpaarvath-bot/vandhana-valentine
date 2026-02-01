@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vandhana Will you be my Valentine?</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#ffd6e8,#ffeaf4);
+  font-family:Arial, sans-serif;
+}
+
+.card{
+  background:#fff;
+  width:320px;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 15px 40px rgba(0,0,0,.2);
+}
+
+.playground{
+  position:relative;
+  width:100%;
+  height:90px;
+  margin-top:25px;
+}
+
+button{
+  padding:12px 26px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  cursor:pointer;
+  position:absolute;
+}
+
+.yes{
+  background:#ff4d88;
+  color:white;
+  left:20px;
+  top:25px;
+}
+
+.no{
+  background:#e0e0e0;
+  right:20px;
+  top:25px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <h1>Vandhana 💖</h1>
+  <p>Will you be my Valentine?</p>
+
+  <div class="playground" id="box">
+    <button class="yes" onclick="yesClicked()">Yes 💕</button>
+    <button class="no" id="noBtn">No 🙈</button>
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const box = document.getElementById("box");
+
+function moveNoButton(){
+  const maxX = box.clientWidth - noBtn.offsetWidth;
+  const maxY = box.clientHeight - noBtn.offsetHeight;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+/* Desktop */
+noBtn.addEventListener("mouseover", moveNoButton);
+
+/* Mobile */
+noBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault(); // stop actual tap
+  moveNoButton();
+});
+
+function yesClicked(){
+  document.getElementById("card").innerHTML = `
+    <h1>💖 Yayyy 💖</h1>
+    <p>Vandhana Loves Veehaan</p>
+    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"
+         style="width:200px;border-radius:15px;">
+  `;
+}
+</script>
+
+</body>
+</html>
